@@ -109,19 +109,21 @@ def login():
 
 	#Kill any process running at PORT 6660
 	removeProcess()
+	if os.getenv("ACCESS_TOKEN") != None and os.getenv("REFRESH_TOKEN")!= None:
+		tokenRefresh()
+	else:
+		output("In order to continue, you must login to your Coinbase account 💳", 'bright_white')
+		output("I'm taking you to the login page right now", 'bright_white')
+		time.sleep(2)
 
-	output("In order to continue, you must login to your Coinbase account 💳", 'bright_white')
-	output("I'm taking you to the login page right now", 'bright_white')
-	time.sleep(2)
-
-	AUTH_URI = ('https://www.coinbase.com/oauth/' 
-		+ 'authorize?response_type=code&client_id=' + os.getenv('CLIENTID') + '&redirect_uri=' 
-		+ os.getenv('REDIRECT_URL') + '&scope=' + getScope() +'&code=' + '302')
-	
-	open_new(AUTH_URI)
-	
-	#start the flask server for OAuth
-	app.run(port=6660)
+		AUTH_URI = ('https://www.coinbase.com/oauth/' 
+			+ 'authorize?response_type=code&client_id=' + os.getenv('CLIENTID') + '&redirect_uri=' 
+			+ os.getenv('REDIRECT_URL') + '&scope=' + getScope() +'&code=' + '302')
+		
+		open_new(AUTH_URI)
+		
+		#start the flask server for OAuth
+		app.run(port=6660)
 
 def refreshToken():
 

@@ -25,12 +25,19 @@ Morax aims to provide monitoring of Coinbase assets on the command line. It capa
 ## Installation
 
 ```shell
-$ pip install morax
+$ pip3 install morax
 ```
 
 ## Usage
 
 ⚠️   It is to be noted that this is a proof of concept and by using it, you hereby agree that I'm not responsible for any issues that may occur. Currently MacOS and Linux distributions are supported.
+
+## Supported coins
+* BTC
+* ETH
+* LTC
+* MANA
+* XLM
 
 ## Initialization
 
@@ -105,6 +112,9 @@ Force refresh access token.
 ```
 morax -r
 ```
+## Want to add support for your favourite crypto asset ? 
+
+Please see [Guidelines](https://github.com/punidramesh/morax/blob/main/.github/add_coin.md) for more information.
 
 ## How to contribute?
 
